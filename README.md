@@ -1,14 +1,47 @@
-SCUT 2024 Fall Nerual NetWork and DeepLearning
-任务描述：把图片格式的数学表达式转化为文字格式的LaTex表达式
-模型架构
-编码器-解码器结构，编码器CNN，解码器RNN
-编码器采用的是ResNet + DenseNet，引入了CBAM模块和SE模块
-解码器采用的是GRU，通过残差连接与层归一化实现了三层GRU的训练
-注意力机制使用的是加性注意力，配合门控机制实现了自适应注意力
-评价指标：
-1. BLEU: 衡量模型输出文本的质量
-2. EditDistance: 即 Levenshtein 距离，以取反的百分数呈现，越大越好。例：80% 的
-EditDistance 代表需要改动 20% 的内容才能达到 groundtruth
-3. ExactMatch: 当预测结果和 groundtruth 一样时才算 100% 准确，否则为 0%，因此同样越大越
-好。
-4. Model Complexity：模型进行推理需要多少的相乘相加运算
+# **SCUT 2024 Fall: Neural Network and Deep Learning**
+
+## **任务描述**
+将图片格式的数学表达式转化为文字格式的 LaTeX 表达式。
+
+---
+
+## **模型架构**
+
+采用 **编码器-解码器** 的结构，包括以下部分：
+
+### **1. 编码器（Encoder）**
+- **主框架**：结合 ResNet 和 DenseNet，分别负责提取不同层次的图像特征。
+- **增强模块**：
+  - 引入 **CBAM（Convolutional Block Attention Module）**，融合通道和空间注意力，提升特征的表达能力。
+  - 引入 **SE（Squeeze-and-Excitation）模块**，动态调整通道间的权重，进一步优化特征提取。
+
+### **2. 解码器（Decoder）**
+- **网络结构**：基于三层 GRU 结构。
+  - 使用 **残差连接**，加速收敛并缓解梯度消失。
+  - 结合 **层归一化（Layer Normalization）**，提高稳定性和训练效率。
+- **注意力机制**：
+  - 采用 **加性注意力（Additive Attention）**，适配解码器与编码器输出之间的匹配。
+  - 引入 **门控机制** 实现自适应注意力，提高模型的注意力分配能力。
+
+---
+
+## **评价指标**
+
+模型效果的评估基于以下指标：
+
+1. **BLEU (Bilingual Evaluation Understudy)**：
+   - 衡量模型输出的文本质量，与目标 LaTeX 表达式的相似度。
+
+2. **Edit Distance (编辑距离)**：
+   - 计算预测结果与目标表达式的差异。
+   - 以取反百分比呈现，值越大越好。
+     - 示例：Edit Distance = 80%，代表需要修改 20% 的字符以达到目标表达式。
+
+3. **Exact Match (精确匹配)**：
+   - 当预测结果与目标表达式完全一致时，得分为 100%；否则为 0%。
+   - **目标**：值越高越好。
+
+4. **Model Complexity (模型复杂度)**：
+   - 评估模型推理阶段的计算量，统计所需的乘法和加法操作数量。
+
+---
