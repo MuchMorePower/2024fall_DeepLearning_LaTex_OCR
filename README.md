@@ -54,12 +54,12 @@
 以下是模型在测试集上的主要评价指标：
 
 ```plaintext
-"top1_accuracy": 0.9523947905050861
-"top5_accuracy": 0.9818300248302597
-"bleu4": 0.8581288959030852
-"exact_match": 0.7084206441598758
-"edit_distance": 0.839422973519667
-"score": 1.6504918374149278
+"top1_accuracy": 95.24%
+"top5_accuracy": 98.18%
+"bleu4": 0.8581
+"exact_match": 70.82%
+"edit_distance": 0.8394
+"score": 1.6505
 ```
 ---
 
