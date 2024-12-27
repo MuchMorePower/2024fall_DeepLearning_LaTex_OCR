@@ -1,4 +1,4 @@
-# **SCUT 2024 Fall: Neural Network and Deep Learning**
+# **SCUT 2024 Fall: Neural Network and Deep Learning HMER**
 
 ## **任务描述**
 将图片格式的数学表达式转化为文字格式的 LaTeX 表达式。
